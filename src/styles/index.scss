@@ -1,0 +1,317 @@
+@import './font/stylesheet.css';
+$big-heading: calc(16px + 1.5vw);
+$small-heading: calc(10px + 0.8vw);
+$normal-text: calc(10px + 0.5vw);
+$small-text: calc(9px + 0.3vw);
+$black:#263238;
+$yellow:#e5e79d;
+$red:#9D2628;
+$bg: #f5fcfc;
+$light-turq: #ebf9fa;
+$turquoise: #9DE5E7;
+$dark-turq: #269D9B;
+$darker-turq: #1E7171;
+@mixin main-section {
+    width: 100vw;
+    min-height: 100vh;
+    font-family: 'Spartan MB', sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+
+@mixin center-parents {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden !important;
+}
+
+.App {
+    height: 100vh;
+    width: 100vw;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+    &:visited {
+        color: $darker-turq;
+    }
+}
+
+.nav {
+    @include center-parents();
+    font-family: "Spartan MB", sans-serif;
+    position: fixed;
+    height: 12%;
+    width: 50vw;
+    top: 5vh;
+    z-index: 2001;
+    .nav-wrapper {
+        @include center-parents();
+        justify-content: space-between;
+        width: 67%;
+        height: 100%;
+        img {
+            height: 100%;
+        }
+        nav>a {
+            padding: 0.3rem 0.5rem;
+            font-size: $small-text;
+            color: $turquoise;
+            font-weight: 600;
+            border-bottom: 2px solid $turquoise;
+        }
+        a.active {
+            border-color: $dark-turq;
+            color: $dark-turq;
+        }
+    }
+}
+
+.section {
+    @include main-section();
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    background-color: $bg;
+    display: flex;
+    color: $black;
+}
+
+.section-left,
+.section-right {
+    @include center-parents();
+    flex: 1;
+    text-align: left;
+    overflow-y: hidden;
+}
+
+.section-left {
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+.titles {
+    width: 70%;
+    h1 {
+        margin: auto;
+        font-weight: 500;
+        font-size: $big-heading;
+    }
+    span {
+        color: $dark-turq;
+    }
+}
+
+.button-wrapper {
+    @include center-parents();
+    position: absolute;
+    background: $bg;
+    width: 70%;
+    height: 15%;
+    justify-content: end;
+    bottom: 25%;
+    .explore-button {
+        border: none;
+        border-radius: 0;
+        background: linear-gradient(to right, $turquoise 49%, $dark-turq 50%, $dark-turq 100%);
+        background-size: 200% 100%;
+        background-position: right;
+        color: $light-turq;
+        padding: 0.7rem 1.9rem;
+        a {
+            font-size: $normal-text;
+            color: $bg;
+            font-weight: 400;
+            font-family: "Spartan MB", sans-serif;
+            margin-top: 0.2rem;
+            margin-bottom: 0;
+        }
+    }
+}
+
+.section-right {
+    background-color: $darker-turq;
+    overflow-x: hidden;
+    position: relative;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.illustration {
+    width: 90%;
+    margin: auto;
+}
+
+#About {
+    .section-left {
+        flex-direction: column;
+        overflow-x: hidden;
+        .bulb-holder {
+            height: 20vh;
+            width: 50vw;
+            top: 0;
+            position: fixed;
+            z-index: 2000;
+            background-color: $bg;
+        }
+        svg.bulb-about {
+            width: 6rem;
+            height: 6rem;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            transform: translateX(50%);
+            transform-origin: center center;
+            g {
+                transform: translateX(1rem) rotate(13deg);
+            }
+        }
+        .wire {
+            height: 1px;
+            width: 100%;
+            background: $dark-turq;
+            position: absolute;
+            bottom: 0.14rem;
+            .pulse {
+                width: 3vw;
+                height: 1px;
+                background: $yellow;
+                position: absolute;
+                right: 0;
+            }
+        }
+    }
+    .section-right {
+        .about-titles {
+            width: 70%;
+            .title-child {
+                margin: 3rem 0;
+                color: $light-turq;
+                p {
+                    margin: 0;
+                    font-size: $normal-text;
+                }
+            }
+        }
+    }
+}
+
+.pic-holder {
+    position: relative;
+    @include center-parents();
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 70% 30%;
+    grid-template-areas: "hero hero hero hero hero" "kid1 kid1 kid2 kid2 kid2";
+    row-gap: 1rem;
+    column-gap: 1rem;
+    width: 70%;
+    height: 65%;
+    img {
+        object-fit: cover;
+    }
+    .hero-pic {
+        width: 100%;
+        height: 100%;
+        grid-area: hero;
+    }
+    .kid-pic {
+        width: 100%;
+        height: 100%;
+        grid-area: kid1;
+    }
+    .kid2-pic {
+        width: 100%;
+        height: 100%;
+        grid-area: kid2;
+    }
+}
+
+#Courses {
+    .section-right {
+        flex-grow: 0;
+    }
+    .courses-panel {
+        @include center-parents();
+        position: relative;
+        justify-content: space-between;
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+        column-gap: 1rem;
+        row-gap: 1rem;
+        width: 90%;
+        height: 60%;
+        .course {
+            @include center-parents();
+            flex-direction: column;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: $light-turq;
+            border-radius: 10px;
+            overflow: hidden;
+            .course-img {
+                @include center-parents();
+                position: absolute;
+                overflow: hidden;
+                width: 100%;
+                height: 60%;
+                top: 0;
+                opacity: 0.8;
+                img {
+                    object-fit: cover;
+                    width: 250%;
+                }
+            }
+            .course-des {
+                @include center-parents();
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 40%;
+                .course-des-wrapper {
+                    width: 90%;
+                    h2 {
+                        font-weight: 500;
+                        color: $darker-turq;
+                        font-size: $small-heading;
+                        margin-top: 0;
+                    }
+                    p {
+                        color: $black;
+                        font-size: $small-text;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:1000px) {
+    .courses-panel {
+        grid-template-columns: 50% 50% !important;
+        grid-template-rows: 50% 50%;
+    }
+}
+
+@media (max-width: 800px) {
+    .section {
+        flex-direction: column;
+    }
+    .courses-panel {
+        grid-template-columns: 100% !important;
+        grid-template-rows: 25% 25% 25% 25%;
+    }
+}

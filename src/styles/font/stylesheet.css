@@ -1,0 +1,108 @@
+@font-face {
+    font-family: 'Spartan MB';
+    src: url('SpartanMB-SemiBold.eot');
+    src: local('Spartan MB SemiBold'), local('SpartanMB-SemiBold'),
+        url('SpartanMB-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('SpartanMB-SemiBold.woff2') format('woff2'),
+        url('SpartanMB-SemiBold.woff') format('woff'),
+        url('SpartanMB-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Spartan MB';
+    src: url('SpartanMB-ExtraLight.eot');
+    src: local('Spartan MB ExtraLight'), local('SpartanMB-ExtraLight'),
+        url('SpartanMB-ExtraLight.eot?#iefix') format('embedded-opentype'),
+        url('SpartanMB-ExtraLight.woff2') format('woff2'),
+        url('SpartanMB-ExtraLight.woff') format('woff'),
+        url('SpartanMB-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Spartan MB';
+    src: url('SpartanMB-Black.eot');
+    src: local('Spartan MB Black'), local('SpartanMB-Black'),
+        url('SpartanMB-Black.eot?#iefix') format('embedded-opentype'),
+        url('SpartanMB-Black.woff2') format('woff2'),
+        url('SpartanMB-Black.woff') format('woff'),
+        url('SpartanMB-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Spartan MB';
+    src: url('SpartanMB-Regular.eot');
+    src: local('Spartan MB Regular'), local('SpartanMB-Regular'),
+        url('SpartanMB-Regular.eot?#iefix') format('embedded-opentype'),
+        url('SpartanMB-Regular.woff2') format('woff2'),
+        url('SpartanMB-Regular.woff') format('woff'),
+        url('SpartanMB-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Spartan MB';
+    src: url('SpartanMB-ExtraBold.eot');
+    src: local('Spartan MB ExtraBold'), local('SpartanMB-ExtraBold'),
+        url('SpartanMB-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('SpartanMB-ExtraBold.woff2') format('woff2'),
+        url('SpartanMB-ExtraBold.woff') format('woff'),
+        url('SpartanMB-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Spartan MB';
+    src: url('SpartanMB-Medium.eot');
+    src: local('Spartan MB Medium'), local('SpartanMB-Medium'),
+        url('SpartanMB-Medium.eot?#iefix') format('embedded-opentype'),
+        url('SpartanMB-Medium.woff2') format('woff2'),
+        url('SpartanMB-Medium.woff') format('woff'),
+        url('SpartanMB-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Spartan MB';
+    src: url('SpartanMB-Bold.eot');
+    src: local('Spartan MB Bold'), local('SpartanMB-Bold'),
+        url('SpartanMB-Bold.eot?#iefix') format('embedded-opentype'),
+        url('SpartanMB-Bold.woff2') format('woff2'),
+        url('SpartanMB-Bold.woff') format('woff'),
+        url('SpartanMB-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Spartan MB';
+    src: url('SpartanMB-Light.eot');
+    src: local('Spartan MB Light'), local('SpartanMB-Light'),
+        url('SpartanMB-Light.eot?#iefix') format('embedded-opentype'),
+        url('SpartanMB-Light.woff2') format('woff2'),
+        url('SpartanMB-Light.woff') format('woff'),
+        url('SpartanMB-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Spartan MB';
+    src: url('SpartanMB-Thin.eot');
+    src: local('Spartan MB Thin'), local('SpartanMB-Thin'),
+        url('SpartanMB-Thin.eot?#iefix') format('embedded-opentype'),
+        url('SpartanMB-Thin.woff2') format('woff2'),
+        url('SpartanMB-Thin.woff') format('woff'),
+        url('SpartanMB-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+

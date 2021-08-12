@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'Anodina';
+    src: url('Anodina-Light.eot');
+    src: local('Anodina Light'), local('Anodina-Light'),
+        url('Anodina-Light.eot?#iefix') format('embedded-opentype'),
+        url('Anodina-Light.woff2') format('woff2'),
+        url('Anodina-Light.woff') format('woff'),
+        url('Anodina-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Anodina Extra';
+    src: url('Anodina-ExtraLight.eot');
+    src: local('Anodina Extra Light'), local('Anodina-ExtraLight'),
+        url('Anodina-ExtraLight.eot?#iefix') format('embedded-opentype'),
+        url('Anodina-ExtraLight.woff2') format('woff2'),
+        url('Anodina-ExtraLight.woff') format('woff'),
+        url('Anodina-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Anodina';
+    src: url('Anodina-Bold.eot');
+    src: local('Anodina Bold'), local('Anodina-Bold'),
+        url('Anodina-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Anodina-Bold.woff2') format('woff2'),
+        url('Anodina-Bold.woff') format('woff'),
+        url('Anodina-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Anodina';
+    src: url('Anodina-Regular.eot');
+    src: local('Anodina Regular'), local('Anodina-Regular'),
+        url('Anodina-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Anodina-Regular.woff2') format('woff2'),
+        url('Anodina-Regular.woff') format('woff'),
+        url('Anodina-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Anodina Extra';
+    src: url('Anodina-ExtraBold.eot');
+    src: local('Anodina Extra Bold'), local('Anodina-ExtraBold'),
+        url('Anodina-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('Anodina-ExtraBold.woff2') format('woff2'),
+        url('Anodina-ExtraBold.woff') format('woff'),
+        url('Anodina-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
