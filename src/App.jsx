@@ -3,6 +3,7 @@ import Home from './Home';
 import About from './About';
 import Nav from './Nav';
 import Courses from './Courses';
+import Contact from './Contact';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Home />
       <About />
       <Courses />
+      <Contact />
     </div>
   );
 }

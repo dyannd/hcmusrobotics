@@ -12,8 +12,8 @@ function Home() {
                 </div>
 
                 <div className="button-wrapper">
-                    <button className="explore-button" >
-                        <a href="#Courses">Explore</a>
+                    <button className="explore-button home-button" >
+                        <a href="#About">About Us</a>
                     </button>
                 </div>
             </div>

@@ -3,16 +3,18 @@ import CourseCard from './CourseCard';
 import wedo from './styles/wedo.jpg';
 import arduino from './styles/arduino.jpg';
 import nao from './styles/nao.jpg';
-
+import mindstorms from './styles/mindstorms.jpg';
 function Courses() {
     return (
         <div id="Courses" className="section">
-            <div className="section-left">
+            <div className="section-left courses-left">
                 <div className="courses-panel">
                     <CourseCard 
                     title="Mindstorms" 
                     des="Explore the basics of programming, logical and creative thinking, as well as scientific communications, through 
                     building and functioning LEGO EV3 robots."
+                    img={mindstorms}
+                    offset="translateY(10%)"
                     />
                     <CourseCard 
                     title="WEDO"
@@ -37,7 +39,7 @@ function Courses() {
                     />
                 </div>
             </div>
-            <div className="section-right">
+            <div className="section-right courses-right">
                 
             </div>
         </div>

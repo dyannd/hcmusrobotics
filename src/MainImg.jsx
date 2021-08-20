@@ -9,13 +9,9 @@ function MainImg() {
     }, [])
     useEffect(() => {
         if (loading.current) {
-            const distanceBulb = document.getElementById("bulb").getBoundingClientRect().left;
-            const distanceRightPanel = document.getElementsByClassName("section-right")[0].getBoundingClientRect().left;
-
             gsap.registerPlugin(ScrollTrigger);
             ScrollTrigger.defaults({
-                toggleActions: "play reverse play reverse",
-                scroller: ".App"
+                toggleActions: "play none reverse reset "
             });
             function Arm() {
                 const armAnim = gsap.timeline({ repeat: -1, defaults: { duration: 1 } });
@@ -40,20 +36,51 @@ function MainImg() {
             }
 
             function Home() {
-                const scrollAnimation = gsap.timeline({
-                    defaults: { duration: 0.7 }
-                })
 
-                scrollAnimation
+
+                function scrollHome() {
+                    const scrollAnimation = gsap.timeline({
+                        defaults: { duration: 1 },
+                        scrollTrigger: {
+                            trigger: "#Home",
+                            start: "top top",
+                            end: "bottom top",
+                            scrub: 1,
+                            pin: true,
+                            anticipatePin: 1,
+                            markers: true,
+                        }
+                    })
+
+                    scrollAnimation
+                        .add('begin')
+                        .to("#laptop", { x: "-100vw" }, 'begin')
+                        .to("#robot", { x: "-100vw" }, 'begin')
+                        .to("#bulb", { x: "-100vw" }, 'begin')
+                        .add('middle')
+                        .to(".home-titles", { y: "200%" }, 'begin')
+                        .to("#hero", { y: "100%", scale: 0 }, 'begin')
+                        .fromTo(".home-button", { opacity: 1 }, { opacity: 0, duration: 0.6 }, 'begin');
+
+                    return scrollAnimation
+                }
+
+
+
+                const startAnimation = gsap.timeline()
+
+                startAnimation
                     .add('start')
                     .from('#hero', { opacity: 0 }, 'start')
                     .from(".home-titles", { opacity: 0 }, 'start')
-                    .from(".explore-button", { opacity: 0 }, 'start')
+                    .fromTo(".explore-button", { opacity: 0 }, { opacity: 1 }, 'start')
                     .from('#ring', { scale: 0, transformOrigin: "center center", ease: "Power2.easeOut" })
                     .from('#ring-bg', { opacity: 0 })
                     .add(Arm())
                     .add(Scope())
-                    .fromTo('#background', { opacity: 0, scale: 0, transformOrigin: "left bottom" }, { opacity: 1, scale: 1, transformOrigin: "left bottom" })
+                    .fromTo('#background', { opacity: 0, scale: 0, transformOrigin: "left bottom" },
+                        { opacity: 1, scale: 1, transformOrigin: "left bottom" })
+
                     .add('sync1')
                     .from('#lines', { opacity: 0 }, 'sync1')
                     .from('#laptop', { opacity: 0 }, 'sync1')
@@ -62,66 +89,167 @@ function MainImg() {
                     .add(FloatStuffs('#laptop', 0))
                     .add(FloatStuffs('#robot', 0.5))
                     .add(FloatStuffs('#bulb', 1))
-                // .add('begin')
-                // .to("#laptop", { x: "-750" }, 'begin')
-                // .to("#robot", { x: "-800" }, 'begin')
-                // .to("#bulb", { x: "-700" }, 'begin')
-                // .add('middle')
-                // .to(".home-titles", { y: "130%" }, 'middle')
-                // .to("#hero", { y: "100%", scale: 0 }, 'middle')
-                // .to(".explore-button", { opacity: 0 }, 'middle')
+                    .add(scrollHome())
 
+                return startAnimation
 
             }
 
-
-            function ScrollAbout() {
-                const scrollAnimation = gsap.timeline({
+            //animation for the about section 
+            function About() {
+                const about = gsap.timeline({
                     defaults: {
-                        duration: 0.1
+                        duration: 1
                     },
                     scrollTrigger: {
                         trigger: "#About",
                         start: "top top",
-                        toggleActions: "play reset play reset",
-                        markers: true,
+                        scrub: 1,
+                        pin: true,
+                        markers: true
                     }
                 })
+                about
+                    .addLabel('begin')
+                    .fromTo(".bulb-about", { opacity: 0 },
+                        { opacity: 1, y: 0, fill: "#9DE5E7" }, 'begin')
+                    .to(".wire", { width: "100%" }, 'begin')
+                    .from(".pulse", { right: "50vw" })
 
-                scrollAnimation
-                    .add('begin')
-                    .from(".bulb-about", { opacity: 0, duration: 0.6 }, 'begin')
-                    .from(".wire", { width: 0, duration: 0.6 }, 'begin')
-                    .from(".pulse", { right: "50vw", duration: 0.6 })
+                    .addLabel('merge-bulb')
+                    .to(".pulse", { width: 0 }, 'merge-bulb')
+                    .to(".bulb-about", { x: "+=2" })
+                    .to(".bulb-about", { x: "-=2" })
+                    .to(".bulb-about", { x: "+=0" })
 
-                    .add('merge-bulb')
-                    .to(".pulse", { width: 0, duration: 0.1 }, 'merge-bulb')
-                    .to(".bulb-about", { x: "+=2", duration: 0.1 })
-                    .to(".bulb-about", { x: "-=2", duration: 0.1 })
-                    .to(".bulb-about", { x: "+=0", duration: 0.1 })
-
-                    .add('flash')
-                    .to(".bulb-comp", { fill: "#e5e79d", duration: 0.1 }, 'flash')
-                    .to(".section-left", { backgroundColor: "#e5e79d" }, 'flash')
+                    .addLabel('flash')
+                    .fromTo(".bulb-comp", { fill: "#9DE5E7" }, { fill: "#e5e79d" }, 'flash')
+                    .fromTo(".bulb-about", { opacity: 1 }, { opacity: 0 }, 'flash')
+                    .fromTo(".section-left", { backgroundColor: "#f5fcfc" }, { backgroundColor: "#e5e79d" }, 'flash')
                     .to(".section-left", { backgroundColor: "#f5fcfc", delay: 0.1 }, 'flash')
                     .to(".section-right", { backgroundColor: "#e5e79d" }, 'flash')
                     .to(".section-right", { backgroundColor: "#1E7171", delay: 0.1 }, 'flash')
                     .to(".bulb-holder", { backgroundColor: "#e5e79d" }, 'flash')
-                    .to(".bulb-holder", { backgroundColor: "#f5fcfc", delay: 0.1 }, 'flash')
+                    .to(".bulb-holder", { backgroundColor: "transparent", delay: 0.1 }, 'flash')
                     .to(".wire", { width: 0 }, 'flash')
 
-                    .from(".about-titles", { opacity: 0, ease: "sine", delay: 0.1, duration: 0.5 }, 'flash')
-                    .from(".kid-pic", { opacity: 0, delay: 0.1, duration: 0.5 }, 'flash')
-                    .from(".kid2-pic", { opacity: 0, delay: 0.1, duration: 0.5 }, 'flash')
-                    .from(".hero-pic", { opacity: 0, delay: 0.1, duration: 0.5 }, 'flash')
-                    .add('ending')
+                    .from(".about-titles", { opacity: 0, ease: "sine", delay: 0.1, duration: 5, y: "-5%" }, 'flash')
+                    .from(".kid-pic", { opacity: 0, delay: 0.1, duration: 5, y: "-15%" }, 'flash')
+                    .from(".kid2-pic", { opacity: 0, delay: 0.1, duration: 5, y: "-15%" }, 'flash')
+                    .from(".hero-pic", { opacity: 0, delay: 0.1, duration: 5, y: "-5%" }, 'flash')
+                return about;
+            }
+
+            function AboutAfter() {
+                const aboutAfter = gsap.timeline({
+                    defaults: {
+                        duration: 1
+                    },
+                    paused: true,
+                    scrollTrigger: {
+                        trigger: "#About",
+                        start: "top top",
+                        scrub: 1,
+                    }
+                })
+                aboutAfter
+                    .addLabel('disappear')
+                    .to(".about-titles", { opacity: 0, ease: "sine", delay: 0.1, duration: 5, y: "5%" }, 'disappear')
+                    .to(".kid-pic", { opacity: 0, delay: 0.1, duration: 5, y: "15%" }, 'disappear')
+                    .to(".kid2-pic", { opacity: 0, delay: 0.1, duration: 5, y: "15%" }, 'disappear')
+                    .to(".hero-pic", { opacity: 0, delay: 0.1, duration: 5, y: "5%" }, 'disappear')
+
+                return aboutAfter;
             }
 
 
+            function Courses() {
+
+
+                const courses = gsap.timeline({
+                    defaults: {
+                        duration: 0.6
+                    },
+                    scrollTrigger: {
+                        trigger: "#Courses",
+                        start: "top top",
+                        end: "+=100%",
+                        pin: true,
+                        anticipatePin: 1,
+                        scrub: 1,
+                        markers: true,
+                    }
+                })
+
+                const vibrate = gsap.timeline({
+                    repeat: -1, defaults: { duration: 0.3 }, paused: true
+                })
+                vibrate
+                    .add('begin')
+                    .to('.robot-courses', { x: "+=2", ease: "rough", duration: 0.05 }, 'begin')
+                    .to('.robot-courses', { x: "-=2", ease: "rough", duration: 0.05, delay: 0.05 }, 'begin')
+
+
+
+                const smoke = gsap.timeline({
+                    repeat: -1, defaults: { duration: 0.4 }, paused: true
+                })
+                smoke
+                    .fromTo('.right-smoke', { opacity: 0, x: -10 }, { opacity: 1, x: 10 })
+                    .fromTo('.left-smoke', { opacity: 0, x: 10, rotate: 180 },
+                        { opacity: 1, x: -10, rotate: 180 })
+
+
+                courses
+                    .fromTo('.robot-courses', { display: "none", top: "-8rem", opacity: 0 },
+                        { display: "block", top: 0, ease: "bounce.out", duration: 1, opacity: 1 })
+
+                    .add('transition-course')
+                    .fromTo('.robot-courses', { y: "2rem" }, { y: "30vh", ease: "sine.out", duration: 1, delay: 1 }, 'transition-course')
+                    .add(vibrate.play())
+                    .add(smoke.play())
+                    .to(".eye", { fill: "#e5e79d" })
+                    .add('boom')
+                    .add(vibrate.kill())
+                    .add(smoke.kill())
+                    .to('.robot-courses', { x: "-80vw", rotate: -120, ease: "rough" }, 'boom')
+                    .fromTo(".courses-right", { flexGrow: 1 }, { flexGrow: 0, ease: "power2.out" }, 'boom')
+                    .from(".course", { opacity: 0, y: "+=10%", stagger: 0.2, duration: 1 })
+
+                return courses
+
+            }
+
+            function Contacts() {
+                const contacts = gsap.timeline(
+                    {
+                        defaults: {
+                            duration: 0.6
+                        },
+                        scrollTrigger: {
+                            trigger: "#Contacts",
+                            start: "top top",
+                            end: "+=100%",
+                            pin: true,
+                            anticipatePin: 1,
+                            scrub: 0.5,
+                        }
+                    }
+                )
+
+                contacts
+                    .fromTo(".contact-main-title", { yPercent: "10", opacity: 0, textAlign: "left" }, { yPercent: 0, opacity: 1, textAlign: "center" })
+                    .fromTo(".contact-right", { flexGrow: 0 }, { flexGrow: 1 })
+
+
+                return contacts;
+            }
             const launchAnimation = gsap.timeline({ default: { duration: 1 } });
             launchAnimation
                 .add(Home())
-                .add(ScrollAbout())
+                .add(About())
+                .add(Courses())
+                .add(Contacts())
         }
 
 
