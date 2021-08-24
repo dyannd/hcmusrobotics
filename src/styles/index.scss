@@ -1,12 +1,15 @@
 @import './font/stylesheet.css';
-$big-heading: calc(16px + 1.5vw);
+$section-heading: calc(50px + 1.5vw);
+$big-heading: calc(20px + 1.5vw);
 $small-heading: calc(10px + 0.8vw);
-$normal-text: calc(10px + 0.5vw);
+$normal-text: calc(9px + 0.4vw);
 $small-text: calc(9px + 0.3vw);
 $black:#263238;
 $yellow:#e5e79d;
 $red:#9D2628;
 $bg: #f5fcfc;
+$orange:#e7c49d;
+$dark-orange:#c77a30;
 $light-turq: #ebf9fa;
 $turquoise: #9DE5E7;
 $dark-turq: #269D9B;
@@ -36,8 +39,9 @@ body {
 a {
     text-decoration: none;
     cursor: pointer;
+    font-weight: 500;
     &:visited {
-        color: $darker-turq;
+        color: $orange;
     }
 }
 
@@ -63,10 +67,11 @@ a {
             color: $turquoise;
             font-weight: 600;
             border-bottom: 2px solid $turquoise;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         a.active {
-            border-color: $dark-turq;
-            color: $dark-turq;
+            border-color: $orange;
+            color: $dark-orange;
         }
     }
     //the wrapper of menubutton
@@ -135,72 +140,25 @@ a {
     }
 }
 
-.bulb-holder {
-    height: 23vh;
-    width: 50vw;
-    top: 0;
-    position: fixed;
-    z-index: 2000;
-    .bulb-about {
-        opacity: 0;
-        width: 6rem;
-        height: 6rem;
-        position: absolute;
+.section-intro {
+    flex-direction: column;
+    position: absolute;
+    text-align: right;
+    z-index: 4000;
+    margin: auto;
+    right: 0;
+    pointer-events: none;
+    h1 {
+        font-size: $section-heading;
+        font-weight: 300;
+        color: $dark-turq;
+        margin: 0 2rem;
         right: 0;
-        bottom: 0;
-        transform: translateX(50%);
-        transform-origin: center center;
-        g {
-            transform: translateX(1rem) rotate(13deg);
-        }
-    }
-    .wire {
-        height: 1px;
-        width: 0;
-        background: $dark-turq;
-        position: absolute;
-        bottom: 0.14rem;
-        .pulse {
-            width: 3vw;
-            height: 1px;
-            background: $yellow;
-            position: absolute;
-            right: 0;
-        }
-    }
-}
-
-.robot-courses {
-    width: 7rem;
-    height: 7rem;
-    position: fixed;
-    z-index: 2002;
-    left: 50vw;
-    transform: translate(-50%, 0);
-    svg {
-        position: absolute;
-        left: -0.18rem;
-        width: 100%;
-        height: 100%;
-    }
-    .smokes {
-        position: absolute;
-        width: 1.5rem;
-        height: 1.5rem;
-        bottom: -0.3rem;
-    }
-    .right-smoke {
-        right: 0;
-    }
-    .left-smoke {
-        transform: rotate(180deg);
     }
 }
 
 .section {
     @include main-section();
-    // scroll-snap-align: center;
-    // scroll-snap-stop: always;
     background-color: $bg;
     display: flex;
     color: $black;
@@ -220,47 +178,6 @@ a {
     flex-direction: column;
 }
 
-.titles {
-    width: 70%;
-    h1 {
-        margin: auto;
-        font-weight: 500;
-        font-size: $big-heading;
-    }
-    span {
-        color: $dark-turq;
-    }
-}
-
-.button-wrapper {
-    @include center-parents();
-    position: absolute;
-    background: $bg;
-    width: 70%;
-    height: 40%;
-    justify-content: end;
-    bottom: 0%;
-    .explore-button {
-        border: none;
-        border-radius: 0;
-        background: linear-gradient(to right, $turquoise 49%, $dark-turq 50%, $dark-turq 100%);
-        background-size: 200% 100%;
-        background-position: right;
-        position: absolute;
-        top: 0;
-        color: $light-turq;
-        padding: 0.7rem 1.9rem;
-        a {
-            font-size: $normal-text;
-            color: $bg;
-            font-weight: 400;
-            font-family: "Spartan MB", sans-serif;
-            margin-top: 0.2rem;
-            margin-bottom: 0;
-        }
-    }
-}
-
 .section-right {
     background-color: $darker-turq;
     overflow-x: hidden;
@@ -274,60 +191,121 @@ a {
     margin: auto;
 }
 
-#About {
-    .section-left {
-        flex-direction: column;
-        .about-titles {
-            width: 70%;
-            .title-child {
-                margin: 3rem 0;
-                color: $black;
-                p {
-                    margin: 0;
-                    font-size: $normal-text;
-                }
-            }
-        }
-        .button-wrapper {
-            position: relative;
-            background: transparent;
-            height: auto;
-        }
+.titles {
+    width: 70%;
+    h1 {
+        margin: auto;
+        font-weight: 400;
+        font-size: $big-heading;
+    }
+    p {
+        font-size: $normal-text;
+    }
+    span {
+        color: $dark-turq;
+    }
+    span.secondary-span {
+        color: $dark-orange;
     }
 }
 
-.pic-holder {
-    position: relative;
+.button-wrapper {
     @include center-parents();
-    display: grid;
-    grid-template-columns: 20% 20% 20% 20% 20%;
-    grid-template-rows: 70% 30%;
-    grid-template-areas: "hero hero hero hero hero" "kid1 kid1 kid2 kid2 kid2";
-    row-gap: 1rem;
-    column-gap: 1rem;
+    position: absolute;
+    background: $bg;
     width: 70%;
-    height: 65%;
-    img {
-        object-fit: cover;
+    height: 40%;
+    justify-content: end;
+    bottom: 0%;
+}
+
+.explore-button {
+    border: none;
+    border-radius: 0;
+    background: linear-gradient(to right, $turquoise 50%, $dark-orange 50%, $dark-orange 60%, $dark-turq 60%, $dark-turq 100%);
+    background-size: 250% 100%;
+    background-position: right;
+    position: absolute;
+    top: 0;
+    color: $light-turq;
+    padding: 0.7rem 1.9rem;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    font-size: $normal-text;
+    color: $bg;
+    font-weight: 600;
+    font-family: "Spartan MB", sans-serif;
+    &:hover {
+        background-position: left;
+        color: $dark-orange;
     }
-    .hero-pic {
-        width: 100%;
-        height: 100%;
-        grid-area: hero;
-    }
-    .kid-pic {
-        width: 100%;
-        height: 100%;
-        grid-area: kid1;
-    }
-    .kid2-pic {
-        width: 100%;
-        height: 100%;
-        grid-area: kid2;
+}
+
+#About {
+    .section-left {
+        flex-direction: row;
+        .about-content {
+            @include center-parents();
+            width: 50%;
+            height: 100%;
+            width: 100%;
+            .about-titles {
+                width: 70%;
+                .title-child {
+                    margin: 3rem 0;
+                    p {
+                        margin: 0;
+                        font-size: $normal-text;
+                    }
+                }
+            }
+            .button-wrapper {
+                position: relative;
+                background: transparent;
+                height: auto;
+            }
+            .pic-holder {
+                position: relative;
+                @include center-parents();
+                display: grid;
+                grid-template-columns: 20% 20% 20% 20% 20%;
+                grid-template-rows: 70% 30%;
+                grid-template-areas: "hero hero hero hero hero" "kid1 kid1 kid2 kid2 kid2";
+                row-gap: 0.3rem;
+                column-gap: 0.3rem;
+                width: 85%;
+                height: 70%;
+                img {
+                    object-fit: cover;
+                }
+                .hero-pic {
+                    width: 100%;
+                    height: 100%;
+                    grid-area: hero;
+                }
+                .kid-pic {
+                    width: 100%;
+                    height: 100%;
+                    grid-area: kid1;
+                }
+                .kid2-pic {
+                    width: 100%;
+                    height: 100%;
+                    grid-area: kid2;
+                }
+            }
+        }
     }
 }
 
 #Courses {
+    .section-intro {
+        left: 0;
+        right: auto;
+        text-align: left;
+        h1 {
+            color: $bg;
+        }
+    }
     .courses-panel {
         @include center-parents();
         position: relative;
@@ -383,40 +361,95 @@ a {
 }
 
 #Contacts {
-    .section-left {
-        p {
-            font-size: $normal-text;
-            a {
-                font-weight: 600;
-                color: $dark-turq;
+    .section-right {
+        //intro text pop up when scrolling
+        .intro-contact {
+            left: 0;
+            right: 0;
+            text-align: center;
+            span {
+                color: $turquoise;
+            }
+        }
+        //regular titles
+        .titles {
+            text-align: left;
+            h1 {
+                color: $turquoise;
+                margin-bottom: 3vh;
+                span {
+                    color: $orange;
+                }
             }
         }
         form {
             display: flex;
             flex-direction: column;
+            .field-splitter {
+                display: grid;
+                grid-template-columns: 50% 50%;
+                input.name {
+                    width: 90%;
+                }
+            }
+            label {
+                font-size: $small-text;
+                font-weight: 500;
+                color: $turquoise;
+            }
             input,
             textarea {
                 border: none;
                 outline: none;
                 border-radius: 0;
-                margin: 0.5rem 0;
-                padding: 0.5rem;
-                color: $darker-turq;
+                margin-bottom: 4vh;
+                margin-top: 1vh;
+                padding: 0.4rem 0;
+                color: $turquoise;
+                font-size: $small-text;
                 font-family: "Spartan MB", sans-serif;
                 background: transparent;
                 transition: all 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+                border-bottom: $dark-turq 2px solid;
                 &::placeholder {
-                    color: $turquoise;
+                    color: $dark-turq;
                 }
-                border-bottom: $turquoise 2px solid;
                 &:focus {
                     outline: none;
-                    border-bottom: $dark-turq 2px solid;
+                    border-bottom: $turquoise 2px solid;
+                }
+            }
+            .explore-button {
+                position: static;
+                width: 8rem;
+                color: $dark-turq;
+                background: linear-gradient(to right, $turquoise 50%, $orange 50%, $orange 100%);
+                background-size: 200% 100%;
+                background-position: right;
+                &:hover {
+                    background-position: left;
+                    color: $dark-orange;
                 }
             }
         }
-        .button-wrapper {
-            height: 30%;
+    }
+    .section-left {
+        //let's talk section
+        .intro-contact {
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+        h5 {
+            font-size: $small-text;
+            margin-top: 4vh;
+            margin-bottom: 1vh;
+        }
+        a {
+            color: $dark-turq;
+        }
+        p {
+            margin: 0.5vh 0;
         }
     }
 }
@@ -433,27 +466,31 @@ a {
         width: 100%;
         top: 0;
         .nav-wrapper {
-            width: 80%;
+            width: 90%;
         }
     }
     .section {
         flex-direction: column;
     }
     .titles {
-        width: 80% !important;
+        width: 90% !important;
     }
     .button-wrapper {
-        width: 80%;
+        width: 90%;
     }
     #About {
-        .section-right {
-            flex-grow: 0.7;
-            .about-titles {
-                .title-child {
-                    margin: 1rem 0;
-                    h1 {
-                        margin: 0.5rem 0;
+        .section-left {
+            flex-direction: column-reverse;
+            .about-content {
+                height: auto;
+                width: 100%;
+                .titles {
+                    .title-child {
+                        margin: 1.3rem 0;
                     }
+                }
+                .pic-holder {
+                    height: 80%;
                 }
             }
         }
@@ -469,8 +506,18 @@ a {
                 }
                 .course-des {
                     height: 80%;
-                    background: rgba(235, 249, 250, 0.8);
+                    background: rgba(235, 249, 250, 0.9);
                 }
+            }
+        }
+    }
+    #Contacts {
+        .section-left {
+            padding-top: 8vh;
+        }
+        .section-right {
+            .contact-links {
+                flex-direction: row;
             }
         }
     }
