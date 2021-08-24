@@ -14,6 +14,7 @@ $light-turq: #ebf9fa;
 $turquoise: #9DE5E7;
 $dark-turq: #269D9B;
 $darker-turq: #1E7171;
+//config for the main section (full width/height)
 @mixin main-section {
     width: 100vw;
     height: 100vh;
@@ -22,6 +23,7 @@ $darker-turq: #1E7171;
     position: relative;
 }
 
+//for any div that centers their children
 @mixin center-parents {
     display: flex;
     align-items: center;
@@ -36,6 +38,7 @@ body {
     overflow-x: hidden;
 }
 
+//setting for links to omit underline and purple visited.
 a {
     text-decoration: none;
     cursor: pointer;

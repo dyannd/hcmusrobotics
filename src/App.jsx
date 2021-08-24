@@ -148,7 +148,7 @@ function App() {
             pin: true,
             anticipatePin: 1,
             scrub: 1,
-            markers: true,
+
 
           }
         })
