@@ -1,4 +1,5 @@
-# A Page That I rebuild for Robotics & IoT, HCMC, Vietnam
+# A Page That I rebuild for Robotics & IoT, HCMC, Vietnam 
+https://hcmusrobotics.netlify.app/
 The club's current website: https://ailab.hcmus.edu.vn/riot.
 
 This current website is only a sub-representation of the Club as a child of AI-LAB. I wanted to build a landing page for the Robotics & Iot Club, specifically to target kids and teenagers to participate in the club. The landing page contains only the basics of the club such as about, offers, and some contact information. 
