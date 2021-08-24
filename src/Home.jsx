@@ -14,7 +14,7 @@ function Home({ scrollTo }) {
 
                 <div className="button-wrapper">
                     <button className="explore-button home-button"
-                        onClick={() => window.scrollTo(0, scrollTo)}
+                        onClick={() => window.scrollTo({ top: scrollTo, behavior: "smooth" })}
                     >
                         About Us
                     </button>

@@ -28,7 +28,7 @@ function About({ scrollTo }) {
 
                         <div className="button-wrapper">
                             <button className="explore-button about-button"
-                                onClick={() => window.scrollTo({ y: scrollTo, behavior: "smooth" })}
+                                onClick={() => window.scrollTo({ top: scrollTo, behavior: "smooth" })}
                             >
                                 Our Offers
                             </button>

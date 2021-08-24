@@ -237,6 +237,7 @@ a {
     color: $bg;
     font-weight: 600;
     font-family: "Spartan MB", sans-serif;
+    cursor: pointer;
     &:hover {
         background-position: left;
         color: $dark-orange;
@@ -248,6 +249,7 @@ a {
         flex-direction: row;
         .about-content {
             @include center-parents();
+            position: relative;
             width: 50%;
             height: 100%;
             width: 100%;
@@ -491,9 +493,6 @@ a {
                     .title-child {
                         margin: 1.3rem 0;
                     }
-                }
-                .pic-holder {
-                    height: 80%;
                 }
             }
         }
